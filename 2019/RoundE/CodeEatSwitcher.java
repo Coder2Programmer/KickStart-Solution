@@ -36,10 +36,7 @@ public class Solution {
                     stringBuilder.append('N');
                     continue;
                 }
-                int index = Arrays.binarySearch(codeSum, 1, codeSum.length, targetCode);
-                if (index < 0) {
-                    index = -index - 1;
-                }
+                int index = binarySearch(codeSum, 1, codeSum.length, targetCode);
                 double remainsEat = ((double)(codeSum[index] - targetCode) / codeEatPairs.get(index-1).getKey()) * codeEatPairs.get(index-1).getValue();
                 if (remainsEat + eatSum[index+1] >= targetEat) {
                     stringBuilder.append('Y');
@@ -67,5 +64,19 @@ public class Solution {
         public int getValue() {
             return value;
         }
+    }
+
+    private static int binarySearch(long[] array, int fromIndex, int toIndex, int key) {
+        int low = fromIndex;
+        int high = toIndex;
+        while (low < high) {
+            int mid = low + high >>> 1;
+            if (array[mid] < key) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+        return low;
     }
 }
