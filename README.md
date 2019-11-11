@@ -1,2 +1,2 @@
 # KickStart-Solution
-Solution of google kickstart.
+Solution of google kickstart in java.
